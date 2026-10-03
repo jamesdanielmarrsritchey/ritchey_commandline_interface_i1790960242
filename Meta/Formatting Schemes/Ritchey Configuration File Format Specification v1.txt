@@ -1,0 +1,37 @@
+# Ritchey Configuration File Format Specification v1
+
+Ritchey Configuration File Format (RCFF) is a file format for storing configuration information for applications, and web applications (e.g., content management systems, web platforms, etc). This specification defines version 1 of the format (Ritchey Configuration File Format v1).
+
+RULES:
+- Configuration files use ".conf" as their file extension.
+- Where possible, configuration files must capitalize the start of each word in their name (e.g., "Website Name.conf").
+- Configuration file names must be only letters, and numbers, with the following exceptions:
+ - The file extension can contain periods.
+ - If necessary, spaces can be replaced with underscores. If this is done, words must be all lowercase (e.g., "website_name.conf").
+- Each entry in the configuration file uses a label, a colon, and then either a single line value, or a multi-line value. A single line value starts with a single space, and then a string. A multi-line value starts with a double-quote on its own line, then has the multi-line string value, and then ends with a double-quote on its own line. Generally the only value that may need to be multi-line is the content value.
+- Each configuration file must have a name entry (the name of the configuration file), and a content entry (holds the actual content). It is recommended to have a description entry too, describing what the configuration file contains, and how that information is used by the project.
+- Multi-line values generally use double quotes on their own lines to indicate the start and end of a value for an entry. However, if the value may contain such a line itself, IDs can be added to the double quote lines (e.g., ""(124)""). The ID is just a short custom string, wrapped in curved brackets. It can be random, a CRC32, a time-stamp, or something else. Using a CRC32 of the value is recommended. An ID can only contain numbers, and/or lowercase letters. The ID cannot be re-used in the same configuration file.
+- Configuration files used to provide file, or folder paths must use the following format to indicate if the path is relative to the project folder, or an absolute path:
+ - "Relative Path: /path/to/item" for relative paths (meaning relative to the project folder).
+ - "Absolute Path: /path/to/item" for absolute paths.
+- With the exception of external binaries used as dependencies, relative paths should almost always be used as default path values in configuration files.
+- Configuration files should be stored in "/Source/Configuration Files".
+
+EXAMPLE 1:
+"
+Name: Website Name
+Description: Defines the name of the website.
+Content: Example Website
+"
+
+EXAMPLE 2:
+"
+Name: Character Set
+Description: Defines the restricted word list set used by the application.
+Content:
+"(a43)
+Apple
+Peach
+Pear
+"(a43)
+"

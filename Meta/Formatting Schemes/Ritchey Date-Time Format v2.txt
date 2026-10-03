@@ -1,0 +1,21 @@
+# Ritchey Date-Time Format v2
+
+A formatting scheme for the date, and time.
+
+RULES:
+- The order of sections is year, month, day, hours, minutes, seconds, milliseconds, AM/PM indicator, timezone indicator. Sections can be excluded. The most common combinations are year + month + day, or year + month + day + hours + minutes + seconds + AM/PM indicator.
+- Each section of the date starts with an indicator for what it is indicating (e.g., "Y" for year, "M" for month, "D" for day, "h" for hour, "m" for minute, "s" for second, "ms" for milisecond.
+- The AM/PM indicator is either "AM" or "PM".
+- 24 hour time is not supported.
+- While common practice to include a space between the date, and time portions, it is not a requirement. A dash or underscore is also acceptable to use. No other parts can include spaces, dashes, underscores, except the timezone. The timezone MUST have a space before it.
+- Timezone is indicated using common shorthands (e.g., EST), with no specific restrictions.
+
+EXAMPLE 1:
+"
+Y2026M10D1
+"
+
+EXAMPLE 2:
+"
+Y2026M1D1 H2M55S1PM
+"

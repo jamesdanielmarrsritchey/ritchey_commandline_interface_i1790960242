@@ -1,0 +1,20 @@
+# Ritchey AI Disclosure Specification v1
+
+Ritchey AI Disclosure Specification (RADS) is a format for declaring that a project contains AI-generated material.
+
+RULES:
+- The project will contain a file named "/Meta/AI Disclosure.txt".
+- File will be structured as follows:
+"
+# AI Disclosure
+
+This file is optionally used to indicate if the project contains AI-generated materials by classifying it in accordance with the Ritchey AI Disclosure Specification.
+
+Classification: 
+"
+
+CLASSIFICATIONS:
+- "Class 1" means no AI-generated material was created for and included into this project. However, it does not necessarily mean that AI was not used for other purposes (e.g., testing, idea generation, etc). It also does not necessarily mean the project is free of AI-generated material, because the project may incorporate pre-existing projects (e.g., dependencies) or materials (e.g., assets), which may have been generated, in part, or in whole, using AI.
+- "Class 2" means AI-generated material was created for and included into this project. However the author(s) have likely not marked it.
+- "Class 3" means AI-generated material was created for and included into this project, and at least some efforts have been taken to mark it, and separate it.
+- "" means the authors have not made an AI-generated materials disclosure.

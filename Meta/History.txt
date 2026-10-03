@@ -1,0 +1,13 @@
+# History
+
+TIMELINE:
+- Project started October 2, 2026.
+- Version 0.1 completed October 2, 2026.
+- Version 0.2 completed October 2, 2026.
+- Version 0.3 completed October 2, 2026.
+- Version 0.4 completed October 2, 2026.
+- Version 0.5 completed October 3, 2026.
+- Version 1 completed October 3, 2026.
+
+HIGHLIGHTED CHANGES:
+- Added comma-separated list input style (e.g., "array: item 1, item 2") for array parameters in cli.php. As well as comman-separated list inputs without array label for the icli.

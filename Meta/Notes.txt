@@ -1,0 +1,8 @@
+# Notes
+
+Some useful bits of information about the project.
+
+LIST:
+- Compatible function files declare parameters using Ritchey PHP Function Parameter Declaration Format.
+- The first compatible function in the selected PHP file is the one run.
+- PHP 8.0 or newer is required.

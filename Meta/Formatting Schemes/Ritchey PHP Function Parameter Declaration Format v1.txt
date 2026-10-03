@@ -1,0 +1,17 @@
+# Ritchey PHP Function Parameter Declaration Format v1
+
+A format for declaring PHP function parameters using comments in PHP, so that software/scripts can extract the information needed to run functions.
+
+RULES:
+- Use a multi-line comment to declare this information.
+- The comment should start with the label "PARAMETERS:", and then list each item on a line, using Ritchey Markup Format dot list.
+- Each item entry in the list should use comma separated values to state the parameter name (e.g., "display_errors"), whether it's optional or required (e.g., "required"), and the type of value it uses (e.g., number, array, string, boolean, file, folder).
+
+EXAMPLE:
+"
+/*
+PARAMETERS:
+- display_errors, optional, boolean
+- source_file, required, file
+*/
+"

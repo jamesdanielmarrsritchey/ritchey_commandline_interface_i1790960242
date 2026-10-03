@@ -1,0 +1,70 @@
+# How To Install
+
+This documentation describes installation on Debian 13.
+
+## System Requirements
+
+This project requires PHP 8.0 or newer with the PHP command-line interface available. On Debian 13, update the package information, and install PHP CLI if it is not already installed.
+
+### Steps
+
+Update package information, and install PHP command-line interface.
+
+(
+sudo apt update
+sudo apt install php-cli
+)
+
+Confirm that PHP can be run from the command line.
+
+(
+php --version
+)
+
+## Installation
+
+The project can be stored anywhere the user has permission to read and execute it. However, for Linux users, this project recommends storing the project under one of these patterns:
+
+- /apps/unmanaged/<project name>
+- /home/<username>/apps/unmanaged/<project name>
+
+For this release, examples are:
+
+- /apps/unmanaged/ritchey_commandline_interface_i1790960242_v1
+- /home/<username>/apps/unmanaged/ritchey_commandline_interface_i1790960242_v1
+
+The first location is useful for an installation intended to be available to all users. The second if a specific user needs access and control.
+
+### Steps
+
+Create the preferred parent folder if necessary, then copy or extract the complete project folder into it.
+
+(
+mkdir -p "/home/<username>/apps/unmanaged"
+cp -R "/path/to/ritchey_commandline_interface_i1790960242_v1" "/home/<username>/apps/unmanaged/ritchey_commandline_interface_i1790960242_v1"
+)
+
+(Replace <username> and the source path with the correct values for the system.)
+
+To test the installation, change to the project folder and run the included file hashing function against README.md.
+
+(
+cd "/home/<username>/apps/unmanaged/ritchey_commandline_interface_i1790960242_v1"
+php Source/application/cli.php --source_files "README.md" --algorithms "sha256"
+)
+
+A successful installation outputs a rendered array containing a sha256 key and the checksum calculated for README.md.
+
+The interactive interface can be tested with the same configured function.
+
+(
+php Source/application/icli.php
+)
+
+When prompted for source_files, enter:
+
+(
+README.md
+)
+
+When prompted for the optional algorithms value, press Enter to use the function's defaults.

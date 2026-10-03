@@ -1,0 +1,3 @@
+# Plans
+
+Potential future work can include broader PHP signature support, additional interactive-input controls, and more automated compatibility tests for third-party function projects.

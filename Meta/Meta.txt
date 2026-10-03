@@ -1,0 +1,9 @@
+# Meta
+
+Name: Ritchey Commandline Interface
+Implementation: 1790960242
+Version: 1
+Release Type: Stable
+Long Identifier: Ritchey Commandline Interface i1790960242 v1
+Short Identifier: RCIi1790960242v1
+Author: James Daniel Marrs Ritchey

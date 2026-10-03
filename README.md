@@ -1,2 +1,3 @@
-# ritchey_commandline_interface_i1790960242
-A commandline interface for executing PHP functions.
+# Readme
+
+This file is here for compatibility purposes. Read "/Meta/Meta.txt", "/Meta/Description.txt", and "/Meta/Notes.txt" instead.

@@ -1,0 +1,3 @@
+# Description
+
+Commandline Interface is a PHP command-line front-end for running PHP functions formatted in accordance with the Ritchey PHP Function Parameter Declaration Format. It provides a regular command-line interface, and an interactive interface. Both interfaces inspect the first compatible function in a selected PHP file. A configuration file supplies a default function path if one isn't specified in a command.

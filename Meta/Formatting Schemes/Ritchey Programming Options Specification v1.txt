@@ -1,0 +1,29 @@
+# Ritchey Programming Options Specification v1
+
+Ritchey Programming Options Specification (RPOS) is a convention for computer program commandline options.
+
+RULES:
+- Options must use a prefix, lowercase strings, and underscores between words (e.g., "--source_file '/path/to/file'").
+- There must be a help option setup as "--help", which uses no value, and causes the program to output a help content file, instead of executing anything. The help content file should be stored with the program, in the same folder.
+- With the exception of the help option, all other options must expect a value (e.g., "application.lin ++display_errors 'true'), or they are treated the same as not having been stated at all (e.g., "application.lin ++display_errors" is the same as running the command "application.lin").
+- Options should be optional where possible by using default values.
+- Options should generally be configured to use the prefix "--", and "++". However, "-" and "+" can be used for special use cases, such as programs which act as interfaces for other programs and need to have their own options, while also allowing declaring options for the underlying program.
+- If the prefix "++" or "+" is used, it means the program should convert the values "true", "TRUE", "t", "false", "FALSE", "f", "null", "NULL", "n", to their bool equivalent, if supported by the programming language as a variable value type. If the prefix "++" or "+" is used it means the program should convert whole number values (e.g., "1", "25", etc) to intergers, if the programming language supports integers as a variable value type.
+- There must be a "display_output" option which defaults to TRUE, but can accept FALSE to hide any output, except errors.
+- There must be a "display_errors" option which defaults to TRUE, but can accept FALSE to hide errors from being outputted.
+
+SUGGESTED NAMES FOR COMMON OPTIONS:
+- "source_file" for a file to do something with, or read from. Alternatively, "source_files" for multiple files.
+- "destination_file" for an output file location. Alternatively, "destination_files" for multiple files.
+- "source_folder" for a folder to do something with, or read from. Alternatively, "source_folders" for multiple folders.
+- "destination_folder" for a folder to output to. Alternatively, "destination_folders" for multiple folders.
+- "algorithm" for declaring an algorithm (e.g., a hashing algorithm).
+- "format" for declaring a format (e.g., plain-text).
+- "stdin" for specifying to read from standard input.
+- "stdout" for specifying to output to standard output.
+- "display_errors" for specifying if error messages should be outputted.
+- "display_progress" for specifying if a progress bar, or other progress information should be displayed while the program runs.
+- "help" for outputting help information.
+- "version" for displaying the program version information.
+- "log_file" for declaring the path to where to write a log file.
+- "child_program" for declaring the path to another program's binary to execute.

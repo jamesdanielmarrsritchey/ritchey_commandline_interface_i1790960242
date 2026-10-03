@@ -1,0 +1,142 @@
+# How To Use
+
+Commandline Interface provides two interfaces for executing compatible PHP functions: cli.php for direct command-line options, and icli.php for interactive prompting.
+
+## Option Prefixes
+
+The tool supports all four prefixes from Ritchey Programming Options Specification.
+
+- -option targets Commandline Interface itself and keeps the supplied value as a string.
+- +option targets Commandline Interface itself and applies value conversion.
+- --option targets the loaded PHP function and keeps the supplied value as a string until function parameter conversion occurs.
+- ++option targets the loaded PHP function and applies value conversion before function parameter conversion occurs.
+
+The exception is for --help, which shows the tool's help information.
+
+## Default Function
+
+The tool has a default function that is run when the user doesn't specify a function. This feature is for developers bundling the tool with their function. Regular users will want to specify the function file using options.
+
+The default function path is stored in:
+
+(
+/Source/Configuration Files/Function Path.conf
+)
+
+The included configuration uses a project-relative path to the file hashing function stored in:
+
+(
+/Resources/PHP Functions/fun_4d7e9c21_hash_files_i1790960242_v2.php
+)
+
+To bundle Commandline Interface with another function and make that function the default, change the Content value in Function Path.conf. The path value must use one of these forms:
+
+- Relative Path: /path/inside/project
+- Absolute Path: /full/system/path
+
+A relative path is relative to the root of the Commandline Interface project.
+
+## Regular Command-Line Interface
+
+Run the configured default function:
+
+(
+php Source/application/cli.php --source_files "README.md"
+)
+
+Run a different function file:
+
+(
+php Source/application/cli.php -source_file "/path/to/function.php"
+)
+
+Commandline Interface application options use - or +. Parameters for the loaded function use -- or ++. All options can be supplied in any order.
+
+For example:
+
+(
+php Source/application/cli.php --destination_file "/tmp/output.txt" +display_output true -source_file "/path/to/function.php"
+)
+
+APPLICATION OPTIONS:
+- -source_file or +source_file: Optional path to the PHP function file. If omitted, Function Path.conf is used.
+- -display_output or +display_output: Optional boolean. Defaults to true.
+- -display_errors or +display_errors: Optional boolean. Defaults to true.
+- --help: Displays the help Content File and does not run a function.
+
+The application treats the first compatible global function found in the source file as the function to run.
+
+## Interactive Command-Line Interface
+
+Run the interactive interface with the configured default function:
+
+(
+php Source/application/icli.php
+)
+
+Or provide another PHP function file:
+
+(
+php Source/application/icli.php -source_file "/path/to/function.php"
+)
+
+icli.php accepts application options only, using either - or +. It does not accept -- or ++ function options because it prompts for each function parameter in declaration order. For optional parameters, press Enter without entering a value to use the PHP function's default. Required parameters cannot be skipped.
+
+## Function Requirements
+
+The PHP file must contain a global named function with a PARAMETERS comment that follows Ritchey PHP Function Parameter Declaration Format. Commandline Interface uses the first compatible function in the file.
+
+(
+/*
+PARAMETERS:
+- destination_file, required, file
+- destination_folder, optional, folder
+- display_errors, optional, boolean
+*/
+function fun_example($var_example_destination_file_uns, $var_example_destination_folder_uns = "/tmp", $var_example_display_errors_uns = TRUE) {
+    if (is_string($var_example_destination_file_uns) === FALSE) {
+        return FALSE;
+    } elseif (is_string($var_example_destination_folder_uns) === FALSE) {
+        return FALSE;
+    } elseif (is_bool($var_example_display_errors_uns) === FALSE) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
+}
+)
+
+The public parameter names in the PARAMETERS comment become the -- and ++ options used by cli.php.
+
+For a declared array parameter, cli.php accepts a comma-separated list when the option value begins with array: followed by a space. The complete value should normally be shell-quoted so spaces and double quotes are preserved.
+
+(
+php Source/application/cli.php -source_file "/path/to/function.php" --items 'array: item 1,item 2,item 3'
+)
+
+Each list item may optionally be wrapped in double quotes.
+
+(
+php Source/application/cli.php -source_file "/path/to/function.php" --items 'array: "item 1","item 2","item 3"'
+)
+
+For icli.php, when the declared parameter type is array, enter the comma-separated list directly at the prompt without the array: prefix. Either of these forms is accepted:
+
+(
+item 1,item 2,item 3
+)
+
+(
+"item 1","item 2","item 3"
+)
+
+JSON arrays and JSON objects that decode to PHP arrays are supported in both interfaces.
+
+## Help
+
+Both interfaces use the same help Content File stored beside them.
+
+(
+php Source/application/cli.php --help
+php Source/application/icli.php --help
+)
